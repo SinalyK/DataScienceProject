@@ -14,3 +14,5 @@ COLUMNS:
 
 TARGET_COLUMN:
   name: quality
+  alpha: 0.2
+  l1_ratio: 0.1

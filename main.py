@@ -2,7 +2,7 @@ from src import logger
 from src.pipeline.data_ingestion_pipeline import DataIngestionTariningPipeline
 from src.pipeline.data_validation_pipeline import DataValidationTrainingPipeline
 from src.pipeline.data_transformation_pipeline import DataTransformationTrainingPipeline
-
+from src.pipeline.model_trainer_pipeline import ModelTrainingPipeline
 
 logger.info("Welcome to our Custom logger")
 
@@ -32,6 +32,16 @@ try:
    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
    data_ingestion = DataTransformationTrainingPipeline()
    data_ingestion.initiate_data_transformation()
+   logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+        logger.exception(e)
+        raise e
+
+STAGE_NAME = "Model Trainer stage"
+try:
+   logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<") 
+   data_ingestion = ModelTrainingPipeline()
+   data_ingestion.train()
    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
 except Exception as e:
         logger.exception(e)
